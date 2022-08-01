@@ -1309,11 +1309,6 @@ def value_is_nan(
     >>> print(y)
     False
 
-    >>> x = ivy.array([1])
-    >>> y = ivy.value_is_nan(x, False)
-    >>> print(y)
-    False
-
     >>> x = ivy.array([float('INF')])
     >>> y = ivy.value_is_nan(x)
     >>> print(y)
@@ -1328,11 +1323,6 @@ def value_is_nan(
 
     >>> x = ivy.native_array([1])
     >>> y = ivy.value_is_nan(x)
-    >>> print(y)
-    False
-
-    >>> x = ivy.native_array([1])
-    >>> y = ivy.value_is_nan(x, False)
     >>> print(y)
     False
 
@@ -1353,11 +1343,6 @@ def value_is_nan(
     >>> print(y)
     False
 
-    >>> x = 1
-    >>> y = ivy.value_is_nan(x, False)
-    >>> print(y)
-    False
-
     >>> x = float('INF')
     >>> y = ivy.value_is_nan(x)
     >>> print(y)
@@ -1372,13 +1357,6 @@ def value_is_nan(
 
     >>> x = ivy.Container(a=ivy.array([3]))
     >>> y = ivy.value_is_nan(x)
-    >>> print(y)
-    {
-        a: false
-    }
-
-    >>> x = ivy.Container(a=ivy.array([3]))
-    >>> y = ivy.value_is_nan(x, False)
     >>> print(y)
     {
         a: false
@@ -1412,28 +1390,6 @@ def value_is_nan(
                   and :code:`ivy.Container` inputs: 
 
     >>> x = ivy.Container(a=ivy.array([3]), \
-                          b=ivy.native_array([-3]), \
-                          c=float('INF'))
-    >>> y = ivy.value_is_nan(x)
-    >>> print(y)
-    {
-        a: false,
-        b: false,
-        c: true
-    }
-
-    >>> x = ivy.Container(a=ivy.array([3]), \
-                          b=ivy.native_array([-3]), \
-                          c=float('INF'))
-    >>> y = ivy.value_is_nan(x, False)
-    >>> print(y)
-    {
-        a: false,
-        b: false,
-        c: false
-    }
-
-    >>> x = ivy.Container(a=ivy.array([3]), \
                           b=ivy.native_array([float('INF')]), \
                           c=-3)
     >>> y = ivy.value_is_nan(x)
@@ -1455,27 +1411,6 @@ def value_is_nan(
         c: false
     }
 
-    >>> x = ivy.Container(a=ivy.array([float('INF')]), \
-                          b=ivy.native_array([3]), \
-                          c=-3)
-    >>> y = ivy.value_is_nan(x)
-    >>> print(y)
-    {
-        a: true,
-        b: false,
-        c: false
-    }
-
-    >>> x = ivy.Container(a=ivy.array([float('INF')]), \
-                          b=ivy.native_array([3]), \
-                          c=-3)
-    >>> y = ivy.value_is_nan(x, False)
-    >>> print(y)
-    {
-        a: false,
-        b: false,
-        c: false
-    }
 
     """
     x_scalar = ivy.to_scalar(x) if ivy.is_native_array(x) else x
