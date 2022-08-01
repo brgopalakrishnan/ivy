@@ -1568,7 +1568,6 @@ def value_is_nan(
         c: false
     }
 
-
     """
     x_scalar = ivy.to_scalar(x) if ivy.is_native_array(x) else x
     if not x_scalar == x_scalar:
