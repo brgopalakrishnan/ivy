@@ -1545,40 +1545,10 @@
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    False</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([1])</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x, False)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    False</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([float(&#39;INF&#39;)])</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    True</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([float(&#39;INF&#39;)])</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x, False)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    False</span>
-
 <span class="sd">    With :code:`ivy.NativeArray` input:</span>
 
 <span class="sd">    &gt;&gt;&gt; x = ivy.native_array([1])</span>
 <span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    False</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.native_array([1])</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x, False)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    False</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.native_array([float(&#39;INF&#39;)])</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    True</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.native_array([float(&#39;INF&#39;)])</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x, False)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    False</span>
 
@@ -1589,21 +1559,6 @@
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    False</span>
 
-<span class="sd">    &gt;&gt;&gt; x = 1</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x, False)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    False</span>
-
-<span class="sd">    &gt;&gt;&gt; x = float(&#39;INF&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    True</span>
-
-<span class="sd">    &gt;&gt;&gt; x = float(&#39;INF&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x, False)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    False</span>
-
 <span class="sd">    With :code:`ivy.Container` input:</span>
 
 <span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([3]))</span>
@@ -1611,106 +1566,6 @@
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    {</span>
 <span class="sd">        a: false</span>
-<span class="sd">    }</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([3]))</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x, False)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    {</span>
-<span class="sd">        a: false</span>
-<span class="sd">    }</span>
-<span class="sd">    </span>
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([3]), \</span>
-<span class="sd">                          b=ivy.array([-3]), \</span>
-<span class="sd">                          c=ivy.array(float(&#39;INF&#39;)))</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    {</span>
-<span class="sd">        a: false,</span>
-<span class="sd">        b: false,</span>
-<span class="sd">        c: true</span>
-<span class="sd">    }</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([3]), \</span>
-<span class="sd">                          b=ivy.array([-3]), \</span>
-<span class="sd">                          c=ivy.array(float(&#39;INF&#39;)))</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x, False)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    {</span>
-<span class="sd">        a: false,</span>
-<span class="sd">        b: false,</span>
-<span class="sd">        c: false</span>
-<span class="sd">    }</span>
-
-<span class="sd">    With a mix of :code:`ivy.Array` </span>
-<span class="sd">                  :code:`ivy.NativeArray` </span>
-<span class="sd">                  :code:`Number` </span>
-<span class="sd">                  and :code:`ivy.Container` inputs: </span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([3]), \</span>
-<span class="sd">                          b=ivy.native_array([-3]), \</span>
-<span class="sd">                          c=float(&#39;INF&#39;))</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    {</span>
-<span class="sd">        a: false,</span>
-<span class="sd">        b: false,</span>
-<span class="sd">        c: true</span>
-<span class="sd">    }</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([3]), \</span>
-<span class="sd">                          b=ivy.native_array([-3]), \</span>
-<span class="sd">                          c=float(&#39;INF&#39;))</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x, False)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    {</span>
-<span class="sd">        a: false,</span>
-<span class="sd">        b: false,</span>
-<span class="sd">        c: false</span>
-<span class="sd">    }</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([3]), \</span>
-<span class="sd">                          b=ivy.native_array([float(&#39;INF&#39;)]), \</span>
-<span class="sd">                          c=-3)</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    {</span>
-<span class="sd">        a: false,</span>
-<span class="sd">        b: true,</span>
-<span class="sd">        c: false</span>
-<span class="sd">    }</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([1]), \</span>
-<span class="sd">                          b=ivy.native_array([float(&#39;INF&#39;)]), \</span>
-<span class="sd">                          c=-3)</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x, False)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    {</span>
-<span class="sd">        a: false,</span>
-<span class="sd">        b: false,</span>
-<span class="sd">        c: false</span>
-<span class="sd">    }</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([float(&#39;INF&#39;)]), \</span>
-<span class="sd">                          b=ivy.native_array([3]), \</span>
-<span class="sd">                          c=-3)</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    {</span>
-<span class="sd">        a: true,</span>
-<span class="sd">        b: false,</span>
-<span class="sd">        c: false</span>
-<span class="sd">    }</span>
-
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([float(&#39;INF&#39;)]), \</span>
-<span class="sd">                          b=ivy.native_array([3]), \</span>
-<span class="sd">                          c=-3)</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.value_is_nan(x, False)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    {</span>
-<span class="sd">        a: false,</span>
-<span class="sd">        b: false,</span>
-<span class="sd">        c: false</span>
 <span class="sd">    }</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
